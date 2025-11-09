@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Handling in PHP | Learn PHP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Learn PHP</div>
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Page Layout -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>PHP Topics</h3>
+            <a href="basics.html">PHP Basics</a>
+            <a href="control.html">Control Structures</a>
+            <a href="functions.html">Functions</a>
+            <a href="strings.html" class="active">String Handling</a>
+            <a href="arrays.html">Arrays</a>
+            <a href="forms.html">Forms</a>
+            <a href="database.html">Integrating PHP & Database</a>
+            <a href="userstate.html">Maintaining User States</a>
+            <a href="filesystem.html">Working with File System</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>String Handling in PHP</h1>
+            <p>
+                Strings are one of the most common data types in PHP and are used to store sequences of characters. 
+                PHP provides powerful built-in functions to manipulate, compare, and modify strings easily.
+            </p>
+            <p>
+                String handling functions allow you to perform operations such as concatenation, searching, replacing, and measuring length. 
+                These operations are essential for tasks like form validation, text processing, and data formatting.
+            </p>
+            <p>
+                PHP supports both single-quoted and double-quoted strings, each behaving slightly differently. 
+                Double-quoted strings interpret variables and special characters, while single-quoted strings treat them literally.
+            </p>
+<p>String handling in PHP refers to performing different operations on strings such as concatenation, comparison, modification, and searching. A string is a sequence of characters enclosed in single (' ') or double (" ") quotes.</p>
+
+<p><b>1. Declaring Strings:</b><br>
+Strings can be created using single or double quotes.<br>
+Example:<br>
+&lt;?php<br>
+$str1 = 'Hello';<br>
+$str2 = "World";<br>
+echo $str1 . " " . $str2;<br>
+?&gt;</p>
+
+<p><b>Output:</b><br>
+Hello World</p>
+
+<p><b>2. String Concatenation:</b><br>
+In PHP, the dot (.) operator is used to join two or more strings together.<br>
+Example:<br>
+&lt;?php<br>
+$name = "Saloni";<br>
+echo "Hello " . $name . "!";<br>
+?&gt;</p>
+
+<p><b>Output:</b><br>
+Hello Saloni!</p>
+
+<p><b>3. String Functions in PHP:</b><br>
+PHP provides many built-in string functions to perform various tasks like measuring length, changing case, finding words, and replacing text.</p>
+
+<p><b>a) strlen()</b> – Returns the length of a string.<br>
+Example:<br>
+&lt;?php echo strlen("Hello PHP"); ?&gt;<br>
+Output: 9</p>
+
+<p><b>b) strrev()</b> – Reverses a string.<br>
+Example:<br>
+&lt;?php echo strrev("Hello"); ?&gt;<br>
+Output: olleH</p>
+
+<p><b>c) strtolower()</b> – Converts all characters to lowercase.<br>
+Example:<br>
+&lt;?php echo strtolower("WELCOME"); ?&gt;<br>
+Output: welcome</p>
+
+<p><b>d) strtoupper()</b> – Converts all characters to uppercase.<br>
+Example:<br>
+&lt;?php echo strtoupper("hello"); ?&gt;<br>
+Output: HELLO</p>
+
+<p><b>e) ucfirst()</b> – Converts the first character of a string to uppercase.<br>
+Example:<br>
+&lt;?php echo ucfirst("php language"); ?&gt;<br>
+Output: Php language</p>
+
+<p><b>f) ucwords()</b> – Converts the first character of each word to uppercase.<br>
+Example:<br>
+&lt;?php echo ucwords("welcome to php"); ?&gt;<br>
+Output: Welcome To Php</p>
+
+<p><b>g) trim()</b> – Removes whitespace or predefined characters from both sides of a string.<br>
+Example:<br>
+&lt;?php<br>
+$text = "  Hello PHP  ";<br>
+echo trim($text);<br>
+?&gt;<br>
+Output: Hello PHP</p>
+
+<p><b>h) str_replace()</b> – Replaces some characters with others in a string.<br>
+Example:<br>
+&lt;?php echo str_replace("PHP", "World", "Hello PHP"); ?&gt;<br>
+Output: Hello World</p>
+
+<p><b>i) strpos()</b> – Finds the position of the first occurrence of a substring in a string.<br>
+Example:<br>
+&lt;?php echo strpos("Hello World", "World"); ?&gt;<br>
+Output: 6</p>
+
+<p><b>j) substr()</b> – Returns a part of a string.<br>
+Example:<br>
+&lt;?php echo substr("Welcome to PHP", 0, 7); ?&gt;<br>
+Output: Welcome</p>
+
+<p><b>4. Heredoc and Nowdoc Syntax:</b><br>
+These are used to create multi-line strings easily.</p>
+
+<p><b>Heredoc Example:</b><br>
+&lt;?php<br>
+$str = &lt;&lt;&lt;TEXT<br>
+This is a multi-line<br>
+string using Heredoc syntax.<br>
+TEXT;<br>
+echo $str;<br>
+?&gt;</p>
+
+<p><b>Nowdoc Example:</b><br>
+&lt;?php<br>
+$str = &lt;&lt;&lt;'TEXT'<br>
+This is a Nowdoc string.<br>
+TEXT;<br>
+echo $str;<br>
+?&gt;</p>
+
+<p><b>5. Comparing Strings:</b><br>
+You can compare two strings using comparison operators (==, !=, ===) or the <b>strcmp()</b> function.<br>
+Example:<br>
+&lt;?php<br>
+echo strcmp("Hello", "Hello"); // Output: 0 (equal)<br>
+echo strcmp("Apple", "Banana"); // Output: negative value<br>
+?&gt;</p>
+
+<p><b>6. String Interpolation:</b><br>
+When using double quotes, variables inside a string are automatically replaced with their values.<br>
+Example:<br>
+&lt;?php<br>
+$name = "Saloni";<br>
+echo "Hello $name";<br>
+?&gt;<br>
+Output: Hello Saloni</p>
+
+<p><b>7. Example Program:</b><br>
+&lt;?php<br>
+$text = "PHP is Fun!";<br>
+echo "Original: $text&lt;br&gt;";<br>
+echo "Length: " . strlen($text) . "&lt;br&gt;";<br>
+echo "Uppercase: " . strtoupper($text) . "&lt;br&gt;";<br>
+echo "Reversed: " . strrev($text);<br>
+?&gt;</p>
+
+<p><b>Output:</b><br>
+Original: PHP is Fun!<br>
+Length: 11<br>
+Uppercase: PHP IS FUN!<br>
+Reversed: !nuF si PHP</p>
+
+<p><b>8. Summary:</b><br>
+String handling in PHP is essential for text processing. PHP provides several built-in string functions such as strlen(), strrev(), strtoupper(), strtolower(), str_replace(), and substr() that make working with text easy and efficient. These functions are widely used in web development for form processing, data formatting, and dynamic content generation.</p>
+            <hr>
+            <h2>Example Programs</h2>
+
+            <!-- Program 1 -->
+            <div class="topic">
+                <h3>Program 1: String Concatenation</h3>
+                <pre>
+&lt;?php
+$first = "Learn";
+$second = "PHP";
+$result = $first . " " . $second;
+echo $result;
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Learn PHP</pre>
+            </div>
+
+            <!-- Program 2 -->
+            <div class="topic">
+                <h3>Program 2: String Length</h3>
+                <pre>
+&lt;?php
+$str = "Hello World";
+echo "The length of the string is: " . strlen($str);
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>The length of the string is: 11</pre>
+            </div>
+
+            <!-- Program 3 -->
+            <div class="topic">
+                <h3>Program 3: Counting Words in a String</h3>
+                <pre>
+&lt;?php
+$text = "PHP makes web development easier";
+echo "Word count: " . str_word_count($text);
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Word count: 5</pre>
+            </div>
+
+            <!-- Program 4 -->
+            <div class="topic">
+                <h3>Program 4: Reversing a String</h3>
+                <pre>
+&lt;?php
+$str = "Saloni";
+echo "Reversed string: " . strrev($str);
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Reversed string: inolaS</pre>
+            </div>
+
+            <!-- Program 5 -->
+            <div class="topic">
+                <h3>Program 5: Replacing Text within a String</h3>
+                <pre>
+&lt;?php
+$sentence = "I love Java.";
+$newSentence = str_replace("Java", "PHP", $sentence);
+echo $newSentence;
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>I love PHP.</pre>
+            </div>
+
+            <hr>
+
+            <!-- Summary -->
+            <section class="topic">
+                <h2>Summary</h2>
+                <p>
+                    String handling in PHP is essential for managing textual data efficiently. 
+                    With built-in functions like <code>strlen()</code>, <code>strrev()</code>, <code>str_replace()</code>, and <code>str_word_count()</code>, 
+                    you can easily manipulate strings without writing complex code.
+                </p>
+                <p>
+                    Mastering string functions allows developers to create dynamic, user-friendly applications involving text processing, 
+                    data validation, and formatting.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Learn PHP | Designed by Saloni Goyal</p>
+    </footer>
+
+</body>
+</html>

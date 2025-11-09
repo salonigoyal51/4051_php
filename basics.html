@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Basics | Learn PHP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Learn PHP</div>
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>PHP Topics</h3>
+            <a href="basics.html" class="active">PHP Basics</a>
+            <a href="control.html">Control Structures</a>
+            <a href="functions.html">Functions</a>
+            <a href="strings.html">String Handling</a>
+            <a href="arrays.html">Arrays</a>
+            <a href="forms.html">Forms</a>
+            <a href="database.html">Integrating PHP & Database</a>
+            <a href="userstate.html">Maintaining User States</a>
+            <a href="filesystem.html">Working with File System</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>PHP Basics</h1>
+            <p><b>PHP Basics</b> introduces you to the foundation of server-side scripting. 
+            In this section, you’ll learn the basic syntax, how to print content, use variables, constants, operators, and basic data types. 
+            These concepts form the building blocks of every PHP application and help you understand how dynamic pages are generated on the web.</p>
+---
+<br>
+1. PHP Tokens
+<br>
+Definition:
+<br>Tokens are the smallest building blocks of a PHP program. PHP scripts are made up of tokens which include:
+
+<br>Keywords (e.g., if, else, while, for)
+
+<br>Variables (e.g., $a, $name)
+
+<br>Constants
+
+<br>Operators
+
+<br>Strings and Numbers
+
+<br>Punctuation Symbols (;, {}, ())
+
+
+<br>Example:
+
+<br>$x = 10; // Tokens: $, x, =, 10, ;
+<br>---
+
+<br>2. Variables
+
+<br>Definition:
+<br>Variables are containers used to store data temporarily in memory.
+
+<br>Syntax:
+
+<br>$variable_name = value;
+
+<br>Rules for Variable Names:
+
+<br>Must start with a $ symbol.
+
+<br>Must start with a letter or underscore.
+
+<br>Cannot start with a number.
+
+<br>Variable names are case-sensitive.
+<br>Example:
+
+<br>$name = "Saloni";
+<br>$age = 20;
+<br>---
+
+<br>3. Variable Scope
+
+<br>Definition:
+<br>Scope defines the accessibility of variables within the program.
+<br>Types of Variable Scope in PHP:
+
+<br>1. Local Scope:
+<br>Declared inside a function and accessible only within it.
+<br>
+function test() {
+ <br> $x = 10; 
+ <br> echo $x; // Accessible
+<br>}
+<br>2. Global Scope:
+<br>Declared outside all functions and accessible globally using global keyword.
+
+<br>$y = 20;
+<br>function display() {
+  <br>global $y;
+  <br>echo $y;
+<br>}
+<br>
+
+3. Static Scope:
+Retains its value even after the function execution is over.
+
+<br>function counter() {
+ <br> static $count = 0;
+ <br> $count++;
+  <br>echo $count;
+<br>}
+<br>---
+<br>4. Constants
+<br>Definition:
+Constants are identifiers for simple values that cannot be changed during script execution.
+<br>Syntax:
+
+<br>define("CONSTANT_NAME", value);
+<br>Example:
+<br>define("SITE_NAME", "PHP Learning");
+<br>echo SITE_NAME;
+<br>Features:
+<br>No $ sign before name.
+
+<br>Automatically global.
+
+<br>Value cannot be changed once defined.
+---
+
+<br>5. Data Types in PHP
+
+PHP supports several data types categorized as follows:
+
+<br>Type	Description	Example
+
+<br>String	Sequence of characters	$name = "PHP";
+<br>Integer	Whole numbers	$num = 20;
+<br>Float/Double	Decimal numbers	$price = 99.99;
+<br>Boolean	True or False	$isValid = true;
+<br>Array	Collection of values	$colors = array("red","blue");
+<br>Object	Instance of a class	new ClassName();
+<br>NULL	Variable with no value	$data = NULL;
+
+<br>---
+
+<br>6. Number Handling in PHP
+
+PHP handles numbers as integers and floats automatically.
+
+<br>Common number functions:
+
+<br>is_numeric($x) → Checks if variable is number.
+
+<br>round($num) → Rounds to nearest integer.
+
+<br>rand(min, max) → Generates random number.
+
+<br>abs($num) → Returns absolute value.
+
+
+<br>Example:
+
+<br>$num = -4.7;
+<br>echo abs($num);  // Output: 4.7
+
+<br>---
+
+<br>7. Operands and Operators
+
+<br>Operands:
+The variables or values on which operators perform actions.
+
+<br>$a = 5 + 10; // Operands: 5 and 10
+
+<br>Operators:
+Symbols that perform operations on operands.
+
+<br>Arithmetic Operators: +, -, *, /, %
+
+<br>Assignment Operators: =, +=, -=
+
+<br>Comparison Operators: ==, !=, >, <, >=, <=
+
+<br>Logical Operators: &&, ||, !
+
+<br>Increment/Decrement Operators: ++, --
+
+<br>String Operators: . (concatenation)
+
+<br>Array Operators: +, ==, ===, !=
+
+<br>Ternary Operator: condition ? value1 : value2
+<br>---
+
+<br>8. Comments in PHP
+
+<br>Purpose:
+Used to make code readable and explain logic.
+
+<br>Types of Comments:
+
+<br>// Single-line comment
+<br># Another single-line comment
+<br>/* Multi-line 
+ <br>  comment */
+
+
+
+<br>---
+
+<br>9. echo and print Statements
+
+<br>Feature    |	        echo	                  |print
+<br>Usage	   |  Used to output one or more strings  |Used to output a single string
+<br>ReturnValue|      No return value	              |Returns 1
+<br>Speed	|Faster than print	|Slightly slower
+<br>Example	echo "Hello PHP!";	print "Hello PHP!";
+
+
+<br>Example:
+
+<br>echo "Welcome to PHP!";  
+<br>print "Learn PHP Basics.";
+<br>---
+
+<br>✨ Summary
+
+<br>Tokens are basic units of PHP code.
+
+<br>Variables store data; constants hold fixed values.
+
+<br>Variable scope determines accessibility.
+
+<br>Data types define kinds of data stored.
+
+<br>Operators perform actions on operands.
+
+<br>Comments improve code readability.
+
+<br>echo and print are used to display output.
+
+---
+            <hr>
+            <h2>Example Programs</h2>
+
+            <!-- Program 1 -->
+            <div class="topic">
+                <h3>Program 1: Hello World</h3>
+                <pre>
+&lt;?php
+echo "Hello, World!";
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Hello, World!</pre>
+            </div>
+
+            <!-- Program 2 -->
+            <div class="topic">
+                <h3>Program 2: Using Variables</h3>
+                <pre>
+&lt;?php
+$name = "Saloni";
+$age = 20;
+echo "My name is $name and I am $age years old.";
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>My name is Saloni and I am 20 years old.</pre>
+            </div>
+
+            <!-- Program 3 -->
+            <div class="topic">
+                <h3>Program 3: Arithmetic Operations</h3>
+                <pre>
+&lt;?php
+$a = 10;
+$b = 5;
+echo "Sum: " . ($a + $b) . "&lt;br&gt;";
+echo "Difference: " . ($a - $b) . "&lt;br&gt;";
+echo "Product: " . ($a * $b);
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>
+Sum: 15
+Difference: 5
+Product: 50
+                </pre>
+            </div>
+
+            <!-- Program 4 -->
+            <div class="topic">
+                <h3>Program 4: Constants in PHP</h3>
+                <pre>
+&lt;?php
+define("SITE_NAME", "Learn PHP Hub");
+echo "Welcome to " . SITE_NAME;
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Welcome to Learn PHP Hub</pre>
+            </div>
+
+            <!-- Program 5 -->
+            <div class="topic">
+                <h3>Program 5: Data Types Example</h3>
+                <pre>
+&lt;?php
+$integer = 25;
+$float = 12.5;
+$string = "PHP is fun!";
+$boolean = true;
+
+echo "Integer: $integer&lt;br&gt;";
+echo "Float: $float&lt;br&gt;";
+echo "String: $string&lt;br&gt;";
+echo "Boolean: " . ($boolean ? 'true' : 'false');
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>
+Integer: 25
+Float: 12.5
+String: PHP is fun!
+Boolean: true
+                </pre>
+            </div>
+
+            <hr>
+
+            <!-- Summary -->
+            <section class="topic">
+                <h2>Summary</h2>
+                <p>In this section, we learned about the basic elements of PHP — how to write simple scripts, use variables, perform arithmetic, define constants, and understand data types. 
+                These core concepts help in building logic and dynamic content for websites. 
+                Mastering PHP basics is the first step toward learning advanced concepts such as functions, arrays, and database integration.</p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Learn PHP | Designed by Saloni Goyal</p>
+    </footer>
+
+</body>
+</html>

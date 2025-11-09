@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functions in PHP | Learn PHP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Learn PHP</div>
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Page Layout -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>PHP Topics</h3>
+            <a href="basics.html">PHP Basics</a>
+            <a href="control.html">Control Structures</a>
+            <a href="functions.html" class="active">Functions</a>
+            <a href="strings.html">String Handling</a>
+            <a href="arrays.html">Arrays</a>
+            <a href="forms.html">Forms</a>
+            <a href="database.html">Integrating PHP & Database</a>
+            <a href="userstate.html">Maintaining User States</a>
+            <a href="filesystem.html">Working with File System</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>Functions in PHP</h1>
+            <p>
+                Functions in PHP are reusable blocks of code that perform specific tasks. 
+                Instead of writing the same logic multiple times, you can define a function once and call it whenever needed. 
+                Functions improve readability, reduce redundancy, and make code easier to maintain.
+            </p>
+            <p>
+                PHP supports both <b>built-in functions</b> (like strlen(), date(), and array_push()) and <b>user-defined functions</b> that you can create according to your project’s needs. 
+                A function can accept parameters, perform operations, and return values. 
+                Using functions also makes large projects modular, where each part of the code can be tested or modified independently.
+            </p>
+<p>Functions in PHP are reusable blocks of code that perform a specific task. They help make programs modular, easy to read, and reduce repetition. Instead of writing the same code multiple times, you can create a function and call it whenever needed.</p>
+
+<p><b>1. Defining a Function:</b><br>
+A function in PHP is defined using the <b>function</b> keyword, followed by the function name, parentheses, and a block of code.<br>
+<b>Syntax:</b><br>
+function functionName() {<br>
+&nbsp;&nbsp;// code to be executed<br>
+}</p>
+
+<p><b>Example:</b><br>
+&lt;?php<br>
+function greet() {<br>
+&nbsp;&nbsp;echo "Hello, welcome to PHP Functions!";<br>
+}<br>
+greet(); // Function call<br>
+?&gt;</p>
+
+<p><b>Output:</b><br>
+Hello, welcome to PHP Functions!</p>
+
+<p><b>2. Function with Parameters:</b><br>
+Parameters are variables that are passed into a function. They allow you to provide input to a function.<br>
+<b>Example:</b><br>
+&lt;?php<br>
+function add($a, $b) {<br>
+&nbsp;&nbsp;echo "Sum: " . ($a + $b);<br>
+}<br>
+add(5, 10);<br>
+?&gt;</p>
+
+<p><b>Output:</b><br>
+Sum: 15</p>
+
+<p><b>3. Function with Return Value:</b><br>
+A function can return a value using the <b>return</b> statement. This allows the result to be stored in a variable or used in expressions.<br>
+<b>Example:</b><br>
+&lt;?php<br>
+function multiply($x, $y) {<br>
+&nbsp;&nbsp;return $x * $y;<br>
+}<br>
+$result = multiply(4, 3);<br>
+echo "Result: $result";<br>
+?&gt;</p>
+
+<p><b>Output:</b><br>
+Result: 12</p>
+
+<p><b>4. Function with Default Arguments:</b><br>
+You can assign default values to function parameters. If no value is passed, the default value will be used.<br>
+<b>Example:</b><br>
+&lt;?php<br>
+function greetUser($name = "Guest") {<br>
+&nbsp;&nbsp;echo "Hello, $name!";<br>
+}<br>
+greetUser("Saloni");<br>
+greetUser(); // Uses default<br>
+?&gt;</p>
+
+<p><b>Output:</b><br>
+Hello, Saloni!<br>
+Hello, Guest!</p>
+
+<p><b>5. Passing Arguments by Value and Reference:</b><br>
+By default, arguments are passed by value (a copy of the variable is used). To pass by reference, use an ampersand (&) before the parameter name so that changes affect the original variable.</p>
+
+<p><b>Example (By Reference):</b><br>
+&lt;?php<br>
+function increment(&$num) {<br>
+&nbsp;&nbsp;$num++;<br>
+}<br>
+$x = 5;<br>
+increment($x);<br>
+echo $x; // Output: 6<br>
+?&gt;</p>
+
+<p><b>6. Variable Functions:</b><br>
+In PHP, you can store a function name in a variable and call it dynamically.<br>
+<b>Example:</b><br>
+&lt;?php<br>
+function sayHello() { echo "Hello!"; }<br>
+$func = "sayHello";<br>
+$func(); // Calls sayHello()<br>
+?&gt;</p>
+
+<p><b>7. Built-in Functions:</b><br>
+PHP has many built-in functions for tasks like string manipulation, mathematical calculations, and date handling.<br>
+Examples:<br>
+strlen("Hello") → Returns length of string.<br>
+sqrt(16) → Returns square root (4).<br>
+date("Y") → Returns current year.</p>
+
+<p><b>8. User-defined vs Built-in Functions:</b><br>
+<b>User-defined functions</b> are created by the programmer, while <b>built-in functions</b> are provided by PHP itself. Both help simplify code and reduce redundancy.</p>
+
+<p><b>9. Example Program:</b><br>
+&lt;?php<br>
+function calculateArea($radius) {<br>
+&nbsp;&nbsp;$area = 3.14 * $radius * $radius;<br>
+&nbsp;&nbsp;return $area;<br>
+}<br>
+echo "Area of Circle: " . calculateArea(7);<br>
+?&gt;</p>
+
+<p><b>Output:</b><br>
+Area of Circle: 153.86</p>
+
+<p><b>10. Summary:</b><br>
+Functions in PHP allow code reuse, better organization, and improved readability. They can accept parameters, return values, and even have default arguments. PHP supports both built-in and user-defined functions, making it a powerful language for modular programming.</p>
+            <hr>
+            <h2>Example Programs</h2>
+
+            <!-- Program 1 -->
+            <div class="topic">
+                <h3>Program 1: Simple User-defined Function</h3>
+                <pre>
+&lt;?php
+function greet() {
+    echo "Welcome to Learn PHP!";
+}
+greet();
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Welcome to Learn PHP!</pre>
+            </div>
+
+            <!-- Program 2 -->
+            <div class="topic">
+                <h3>Program 2: Function with Parameters</h3>
+                <pre>
+&lt;?php
+function add($a, $b) {
+    $sum = $a + $b;
+    echo "Sum: $sum";
+}
+add(10, 20);
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Sum: 30</pre>
+            </div>
+
+            <!-- Program 3 -->
+            <div class="topic">
+                <h3>Program 3: Function with Return Value</h3>
+                <pre>
+&lt;?php
+function multiply($x, $y) {
+    return $x * $y;
+}
+$result = multiply(5, 4);
+echo "The product is: $result";
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>The product is: 20</pre>
+            </div>
+
+            <!-- Program 4 -->
+            <div class="topic">
+                <h3>Program 4: Function with Default Parameter</h3>
+                <pre>
+&lt;?php
+function greetUser($name = "Guest") {
+    echo "Hello, $name!";
+}
+greetUser("Saloni");
+echo "&lt;br&gt;";
+greetUser();
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>
+Hello, Saloni!
+Hello, Guest!
+                </pre>
+            </div>
+
+            <!-- Program 5 -->
+            <div class="topic">
+                <h3>Program 5: Recursive Function (Factorial Example)</h3>
+                <pre>
+&lt;?php
+function factorial($n) {
+    if ($n == 0) {
+        return 1;
+    } else {
+        return $n * factorial($n - 1);
+    }
+}
+echo "Factorial of 5 is: " . factorial(5);
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Factorial of 5 is: 120</pre>
+            </div>
+
+            <hr>
+
+            <!-- Summary -->
+            <section class="topic">
+                <h2>Summary</h2>
+                <p>
+                    In this section, you learned how PHP functions help make programs organized and reusable. 
+                    Functions can take arguments, return values, and even call themselves recursively. 
+                    They are extremely helpful in reducing repetitive code, improving readability, and handling specific tasks modularly.
+                </p>
+                <p>
+                    By mastering functions, developers can create powerful, structured, and maintainable PHP applications that are easier to scale and debug.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Learn PHP | Designed by Saloni Goyal</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintaining User States | Learn PHP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Learn PHP</div>
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Layout -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>PHP Topics</h3>
+            <a href="basics.html">PHP Basics</a>
+            <a href="control.html">Control Structures</a>
+            <a href="functions.html">Functions</a>
+            <a href="strings.html">String Handling</a>
+            <a href="arrays.html">Arrays</a>
+            <a href="forms.html">Forms</a>
+            <a href="database.html">Integrating PHP & Database</a>
+            <a href="userstate.html" class="active">Maintaining User States</a>
+            <a href="filesystem.html">Working with File System</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>Maintaining User States in PHP</h1>
+            <p>
+                HTTP is a stateless protocol — meaning every request from a client to a server is independent. 
+                To maintain user information across multiple pages (like login status or shopping cart data), 
+                PHP provides mechanisms like *Sessions* and *Cookies*.
+            </p>
+            <p>
+                <b>Sessions</b> store user data on the server, while <b>Cookies</b> store it on the client’s browser.  
+                These techniques help create personalized user experiences and maintain user identity.
+            </p>
+            <p>
+                Understanding user state management is essential for building secure login systems and dynamic web apps.
+            </p>
+<p>Maintaining user state in PHP means keeping track of a user’s data or activity across multiple web pages. Since HTTP is a stateless protocol, PHP provides different methods to store and maintain user information such as sessions, cookies, and hidden form fields. These methods help create dynamic, personalized, and interactive web applications.</p>
+
+<p><b>1. Why Maintain User State?</b><br>
+In web applications, when a user moves from one page to another, the data they enter or their login status may be lost because each page request is treated as new. User state management allows PHP to remember user preferences, login information, and actions across multiple pages.</p>
+
+<p><b>2. Methods to Maintain User State in PHP:</b><br>
+There are mainly three common techniques for maintaining user state:<br>
+1. Cookies<br>
+2. Sessions<br>
+3. Hidden Form Fields</p>
+
+<p><b>3. Cookies in PHP:</b><br>
+Cookies are small text files stored on the user’s browser. They help remember user data like username or preferences between visits. Cookies are stored on the client-side.</p>
+
+<p><b>Setting a Cookie:</b><br>
+Use the <b>setcookie()</b> function to create a cookie.<br>
+Syntax: setcookie(name, value, expire, path, domain, secure, httponly);</p>
+
+<p><b>Example:</b><br>
+&lt;?php<br>
+setcookie("username", "Saloni", time() + (86400 * 7), "/"); // Expires in 7 days<br>
+?&gt;</p>
+
+<p><b>Accessing a Cookie:</b><br>
+&lt;?php<br>
+if (isset($_COOKIE["username"])) {<br>
+&nbsp;&nbsp;echo "Welcome " . $_COOKIE["username"];<br>
+} else {<br>
+&nbsp;&nbsp;echo "Cookie not set!";<br>
+}<br>
+?&gt;</p>
+
+<p><b>Deleting a Cookie:</b><br>
+To delete a cookie, set its expiration date to a past time.<br>
+&lt;?php<br>
+setcookie("username", "", time() - 3600, "/");<br>
+?&gt;</p>
+
+<p><b>4. Sessions in PHP:</b><br>
+Sessions are used to store user data on the server side. Unlike cookies, session data is not stored on the user’s computer, which makes it more secure. Each user is assigned a unique session ID.</p>
+
+<p><b>Starting a Session:</b><br>
+Use <b>session_start()</b> at the beginning of a page to start a session.<br>
+&lt;?php<br>
+session_start();<br>
+$_SESSION["user"] = "Saloni";<br>
+echo "Session started!";<br>
+?&gt;</p>
+
+<p><b>Accessing Session Variables:</b><br>
+&lt;?php<br>
+session_start();<br>
+echo "Welcome " . $_SESSION["user"];<br>
+?&gt;</p>
+
+<p><b>Destroying a Session:</b><br>
+To end a session and clear all data:<br>
+&lt;?php<br>
+session_start();<br>
+session_unset();<br>
+session_destroy();<br>
+?&gt;</p>
+
+<p><b>5. Hidden Form Fields:</b><br>
+Hidden fields store data within an HTML form and pass it along when the form is submitted. These fields are not visible to users but can be viewed in the source code.</p>
+
+<p><b>Example:</b><br>
+&lt;form method="post" action="next.php"&gt;<br>
+&lt;input type="hidden" name="userid" value="101"&gt;<br>
+&lt;input type="submit" value="Go"&gt;<br>
+&lt;/form&gt;</p>
+
+<p><b>In next.php:</b><br>
+&lt;?php<br>
+echo "User ID: " . $_POST["userid"];<br>
+?&gt;</p>
+
+<p><b>6. Differences between Cookies and Sessions:</b><br>
+<b>Cookies:</b> Data stored on client-side browser.<br>
+<b>Sessions:</b> Data stored on server.<br>
+<b>Cookies:</b> Less secure; can be modified by users.<br>
+<b>Sessions:</b> More secure; data is managed by server.<br>
+<b>Cookies:</b> Used for long-term storage (e.g., “Remember Me”).<br>
+<b>Sessions:</b> Used for temporary storage during active browsing.</p>
+
+<p><b>7. Example Program using Session:</b><br>
+&lt;?php<br>
+// page1.php<br>
+session_start();<br>
+$_SESSION["name"] = "Saloni";<br>
+echo "Session variable set!";<br>
+?&gt;<br><br>
+
+&lt;?php<br>
+// page2.php<br>
+session_start();<br>
+echo "Welcome " . $_SESSION["name"];<br>
+?&gt;</p>
+
+<p><b>Output:</b><br>
+Welcome Saloni</p>
+
+<p><b>8. Example Program using Cookie:</b><br>
+&lt;?php<br>
+setcookie("user", "Saloni", time() + 3600, "/"); // 1 hour cookie<br>
+if (isset($_COOKIE["user"])) {<br>
+&nbsp;&nbsp;echo "Hello " . $_COOKIE["user"];<br>
+} else {<br>
+&nbsp;&nbsp;echo "Cookie not available.";<br>
+}<br>
+?&gt;</p>
+
+<p><b>Output:</b><br>
+Hello Saloni</p>
+
+<p><b>9. Summary:</b><br>
+Maintaining user state in PHP allows web applications to track users across pages. PHP supports state management through cookies, sessions, and hidden form fields. Sessions are secure and server-based, while cookies store data on the client side. Both play a vital role in user authentication, shopping carts, and personalized user experiences.</p>
+            <hr>
+            <h2>Example Programs</h2>
+
+            <!-- Program 1 -->
+            <div class="topic">
+                <h3>Program 1: Starting a Session</h3>
+                <pre>
+&lt;?php
+session_start();
+$_SESSION["username"] = "Saloni";
+echo "Session started! Welcome, " . $_SESSION["username"];
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Session started! Welcome, Saloni</pre>
+            </div>
+
+            <!-- Program 2 -->
+            <div class="topic">
+                <h3>Program 2: Accessing Session Data on Another Page</h3>
+                <pre>
+&lt;?php
+session_start();
+echo "Welcome back, " . $_SESSION["username"];
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Welcome back, Saloni</pre>
+            </div>
+
+            <!-- Program 3 -->
+            <div class="topic">
+                <h3>Program 3: Destroying a Session (Logout)</h3>
+                <pre>
+&lt;?php
+session_start();
+session_unset();   // remove session variables
+session_destroy(); // destroy the session
+echo "You have been logged out successfully!";
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>You have been logged out successfully!</pre>
+            </div>
+
+            <!-- Program 4 -->
+            <div class="topic">
+                <h3>Program 4: Using Cookies in PHP</h3>
+                <pre>
+&lt;?php
+setcookie("user", "Saloni", time() + (86400 * 7), "/"); // 7 days
+echo "Cookie set successfully!";
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Cookie set successfully!</pre>
+            </div>
+
+            <!-- Program 5 -->
+            <div class="topic">
+                <h3>Program 5: Reading Cookie Value</h3>
+                <pre>
+&lt;?php
+if(isset($_COOKIE["user"])) {
+    echo "Welcome back, " . $_COOKIE["user"];
+} else {
+    echo "Hello, new visitor!";
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Welcome back, Saloni</pre>
+            </div>
+
+            <hr>
+
+            <!-- Summary -->
+            <section class="topic">
+                <h2>Summary</h2>
+                <p>
+                    User state management in PHP allows information to persist across different pages. 
+                    <b>Sessions</b> are more secure since data is stored on the server, while <b>Cookies</b> allow lightweight 
+                    storage on the client side.
+                </p>
+                <p>
+                    These techniques are widely used in web development for features like login systems, shopping carts, and personalized dashboards.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Learn PHP | Designed by Saloni Goyal</p>
+    </footer>
+
+</body>
+</html>

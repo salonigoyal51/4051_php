@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working with File System | Learn PHP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Learn PHP</div>
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html ">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Layout -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>PHP Topics</h3>
+            <a href="basics.html">PHP Basics</a>
+            <a href="control.html">Control Structures</a>
+            <a href="functions.html">Functions</a>
+            <a href="strings.html">String Handling</a>
+            <a href="arrays.html">Arrays</a>
+            <a href="forms.html">Forms</a>
+            <a href="database.html">Integrating PHP & Database</a>
+            <a href="userstate.html">Maintaining User States</a>
+            <a href="filesystem.html" class="active">Working with File System</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>Working with the File System in PHP</h1>
+            <p>
+                PHP allows developers to work directly with files on the server — reading, writing, creating, deleting, and uploading files. 
+                This feature is essential for dynamic content management, data storage, and user uploads.
+            </p>
+            <p>
+                The main functions used for file handling are <code>fopen()</code>, <code>fwrite()</code>, <code>fread()</code>, 
+                <code>fclose()</code>, <code>file_exists()</code>, and <code>unlink()</code>.
+            </p>
+            <p>
+                File handling makes PHP a powerful tool for managing documents, logs, and multimedia files in web applications.
+            </p>
+<p>PHP provides powerful functions to interact with the file system. It allows developers to create, open, read, write, append, and delete files on the server. Working with files is useful for tasks like storing data, managing logs, or processing uploaded files.</p>
+
+<p><b>1. Opening a File:</b><br>
+The <b>fopen()</b> function is used to open a file. It requires two parameters: the file name and the mode of operation.<br>
+Syntax: fopen(filename, mode);<br>
+Example:<br>
+$file = fopen("data.txt", "r");</p>
+
+<p><b>Common File Modes:</b><br>
+"r" – Open file for reading (file must exist).<br>
+"w" – Open file for writing (creates a new file or overwrites an existing one).<br>
+"a" – Open file for appending (writes data at the end of the file).<br>
+"x" – Create a new file and open for writing (gives error if file already exists).<br>
+"r+" – Open for reading and writing (file must exist).<br>
+"w+" – Open for reading and writing (creates a new file or overwrites existing one).</p>
+
+<p><b>2. Reading from a File:</b><br>
+To read data from a file, PHP provides functions like <b>fread()</b>, <b>fgets()</b>, and <b>fgetc()</b>.<br>
+Example:<br>
+$file = fopen("data.txt", "r");<br>
+echo fread($file, filesize("data.txt"));<br>
+fclose($file);</p>
+
+<p><b>3. Writing to a File:</b><br>
+The <b>fwrite()</b> function is used to write data to a file.<br>
+Example:<br>
+$file = fopen("data.txt", "w");<br>
+fwrite($file, "Welcome to PHP File Handling!");<br>
+fclose($file);</p>
+
+<p><b>4. Appending Data to a File:</b><br>
+To add new content without deleting existing data, open the file in append mode ("a").<br>
+Example:<br>
+$file = fopen("data.txt", "a");<br>
+fwrite($file, "\nThis line is added later.");<br>
+fclose($file);</p>
+
+<p><b>5. Checking if a File Exists:</b><br>
+Use the <b>file_exists()</b> function to check whether a file is available before opening it.<br>
+Example:<br>
+if (file_exists("data.txt")) { echo "File exists."; } else { echo "File not found."; }</p>
+
+<p><b>6. Deleting a File:</b><br>
+The <b>unlink()</b> function is used to delete an existing file from the server.<br>
+Example:<br>
+if (unlink("data.txt")) { echo "File deleted successfully."; } else { echo "Error deleting file."; }</p>
+
+<p><b>7. Reading File Line by Line:</b><br>
+To read large files efficiently, use <b>fgets()</b> in a loop.<br>
+Example:<br>
+$file = fopen("data.txt", "r");<br>
+while (!feof($file)) { echo fgets($file) . "&lt;br&gt;"; }<br>
+fclose($file);</p>
+
+<p><b>8. Reading Entire File with file_get_contents():</b><br>
+You can read the whole file into a string using one line of code.<br>
+Example:<br>
+$content = file_get_contents("data.txt");<br>
+echo $content;</p>
+
+<p><b>9. Writing Entire File with file_put_contents():</b><br>
+This function writes a string directly to a file (it creates the file if it doesn’t exist).<br>
+Example:<br>
+file_put_contents("data.txt", "PHP makes file handling easy!");</p>
+
+<p><b>10. Example Program:</b><br>
+&lt;?php<br>
+$file = fopen("example.txt", "w");<br>
+fwrite($file, "Learning PHP File System Functions.");<br>
+fclose($file);<br><br>
+$file = fopen("example.txt", "r");<br>
+echo fread($file, filesize("example.txt"));<br>
+fclose($file);<br>
+?&gt;</p>
+
+<p><b>Output:</b><br>
+Learning PHP File System Functions.</p>
+
+<p><b>11. Important File Handling Functions in PHP:</b><br>
+fopen() – Opens a file.<br>
+fclose() – Closes an open file.<br>
+fread() – Reads from a file.<br>
+fwrite() – Writes to a file.<br>
+fgets() – Reads a single line from a file.<br>
+feof() – Checks if the end of the file has been reached.<br>
+unlink() – Deletes a file.<br>
+file_exists() – Checks if a file exists.<br>
+file_get_contents() – Reads the entire file into a string.<br>
+file_put_contents() – Writes data to a file.</p>
+
+<p><b>12. Summary:</b><br>
+PHP’s file handling functions make it possible to create, read, write, append, and delete files easily. The functions like fopen(), fread(), fwrite(), and fclose() are commonly used for basic operations. Using these, developers can store logs, manage content, and handle user data efficiently through the file system.</p>
+            <hr>
+            <h2>Example Programs</h2>
+
+            <!-- Program 1 -->
+            <div class="topic">
+                <h3>Program 1: Creating and Writing to a File</h3>
+                <pre>
+&lt;?php
+$file = fopen("example.txt", "w") or die("Unable to open file!");
+$text = "Hello, this is a file created by PHP.";
+fwrite($file, $text);
+fclose($file);
+echo "File created and written successfully!";
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>File created and written successfully!</pre>
+            </div>
+
+            <!-- Program 2 -->
+            <div class="topic">
+                <h3>Program 2: Reading Data from a File</h3>
+                <pre>
+&lt;?php
+$file = fopen("example.txt", "r") or die("Unable to open file!");
+echo fread($file, filesize("example.txt"));
+fclose($file);
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Hello, this is a file created by PHP.</pre>
+            </div>
+
+            <!-- Program 3 -->
+            <div class="topic">
+                <h3>Program 3: Appending Data to a File</h3>
+                <pre>
+&lt;?php
+$file = fopen("example.txt", "a") or die("Unable to open file!");
+$text = "\nThis line is appended using PHP.";
+fwrite($file, $text);
+fclose($file);
+echo "Data appended successfully!";
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Data appended successfully!</pre>
+            </div>
+
+            <!-- Program 4 -->
+            <div class="topic">
+                <h3>Program 4: Checking if a File Exists</h3>
+                <pre>
+&lt;?php
+$filename = "example.txt";
+if (file_exists($filename)) {
+    echo "File '$filename' exists!";
+} else {
+    echo "File does not exist!";
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>File 'example.txt' exists!</pre>
+            </div>
+
+            <!-- Program 5 -->
+            <div class="topic">
+                <h3>Program 5: Deleting a File</h3>
+                <pre>
+&lt;?php
+$filename = "example.txt";
+if (unlink($filename)) {
+    echo "File deleted successfully!";
+} else {
+    echo "Error deleting file.";
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>File deleted successfully!</pre>
+            </div>
+
+            <hr>
+
+            <!-- Summary -->
+            <section class="topic">
+                <h2>Summary</h2>
+                <p>
+                    PHP provides a variety of file-handling functions to manage files on the server. 
+                    You can create, read, write, append, and delete files dynamically using built-in PHP methods.
+                </p>
+                <p>
+                    Understanding file operations helps developers build applications that handle user uploads, 
+                    manage logs, and create dynamic reports efficiently.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Learn PHP | Designed by Saloni Goyal</p>
+    </footer>
+
+</body>
+</html>

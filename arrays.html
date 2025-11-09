@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays in PHP | Learn PHP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Learn PHP</div>
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Page Layout -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>PHP Topics</h3>
+            <a href="basics.html">PHP Basics</a>
+            <a href="control.html">Control Structures</a>
+            <a href="functions.html">Functions</a>
+            <a href="strings.html">String Handling</a>
+            <a href="arrays.html" class="active">Arrays</a>
+            <a href="forms.html">Forms</a>
+            <a href="database.html">Integrating PHP & Database</a>
+            <a href="userstate.html">Maintaining User States</a>
+            <a href="filesystem.html">Working with File System</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>Arrays in PHP</h1>
+            <p>
+                Arrays in PHP are special variables that can hold multiple values under a single name. 
+                They are extremely useful when you need to store and access a collection of related data efficiently.
+            </p>
+            <p>
+                PHP supports three main types of arrays: 
+                <b>Indexed arrays</b> (numeric keys), <b>Associative arrays</b> (named keys), and <b>Multidimensional arrays</b> (arrays within arrays). 
+                Each serves different data handling needs.
+            </p>
+            <p>
+                Arrays are one of PHP’s most powerful features, allowing developers to store lists, manage data structures, 
+                and perform complex operations using built-in functions like <code>count()</code>, <code>array_merge()</code>, and <code>sort()</code>.
+            </p>
+<p>An array in PHP is a special variable that can hold multiple values under a single name. Each value in an array is called an element, and each element has a key (index) used to access it.</p>
+
+<p>Arrays are used to store multiple related values in one variable instead of many individual variables. For example, instead of creating multiple variables for each fruit name, we can store them all in a single array.</p>
+
+<p>PHP supports three main types of arrays: Indexed Arrays, Associative Arrays, and Multidimensional Arrays.</p>
+
+<p><b>1. Indexed Array:</b> These use numeric indexes starting from 0. Example:<br>
+$fruits = array("Apple", "Banana", "Cherry");<br>
+echo $fruits[1]; // Output: Banana</p>
+
+<p><b>2. Associative Array:</b> These use named keys instead of numbers. Example:<br>
+$age = array("John" => 25, "Riya" => 20, "Aman" => 22);<br>
+echo $age["Riya"]; // Output: 20</p>
+
+<p><b>3. Multidimensional Array:</b> These contain one or more arrays inside another array and are used to store data in tabular form. Example:<br>
+$students = array(<br>
+&nbsp;&nbsp;array("Riya", 18, "A+"),<br>
+&nbsp;&nbsp;array("Aman", 19, "A"),<br>
+&nbsp;&nbsp;array("John", 17, "B+")<br>
+);<br>
+echo $students[0][0]; // Output: Riya</p>
+
+<p>PHP provides several built-in array functions. Common ones include:<br>
+count($arr) – Returns the number of elements.<br>
+array_push($arr, $val) – Adds an element at the end.<br>
+array_pop($arr) – Removes the last element.<br>
+array_merge($a1, $a2) – Merges two or more arrays.<br>
+array_keys($arr) – Returns all the keys of an array.<br>
+sort($arr) – Sorts an array in ascending order.</p>
+
+<p><b>Traversing Arrays:</b> You can display all elements of an array using loops.<br>
+Example for indexed array:<br>
+foreach ($fruits as $fruit) { echo $fruit . "&lt;br&gt;"; }<br>
+Example for associative array:<br>
+foreach ($age as $name => $years) { echo "$name is $years years old.&lt;br&gt;"; }</p>
+
+<p><b>Example Program:</b><br>
+$marks = array("Math" => 90, "Science" => 85, "English" => 88);<br>
+foreach ($marks as $subject => $score) { echo "$subject : $score &lt;br&gt;"; }<br>
+Output:<br>
+Math : 90<br>
+Science : 85<br>
+English : 88</p>
+
+<p><b>Advantages of Arrays:</b> Arrays store multiple values in a single variable, are easy to manage, reduce code length, and are flexible and dynamic.</p>
+
+<p><b>Summary:</b> Arrays in PHP store multiple values in one variable. They are of three types – Indexed, Associative, and Multidimensional. Array functions make it easy to add, remove, or sort elements. Loops like foreach() are used to access and display array elements efficiently.</p>
+            <hr>
+            <h2>Example Programs</h2>
+
+            <!-- Program 1 -->
+            <div class="topic">
+                <h3>Program 1: Indexed Array Example</h3>
+                <pre>
+&lt;?php
+$fruits = array("Apple", "Banana", "Mango");
+echo "I like " . $fruits[0] . ", " . $fruits[1] . " and " . $fruits[2] . ".";
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>I like Apple, Banana and Mango.</pre>
+            </div>
+
+            <!-- Program 2 -->
+            <div class="topic">
+                <h3>Program 2: Associative Array Example</h3>
+                <pre>
+&lt;?php
+$marks = array("Saloni" => 90, "Riya" => 85, "Karan" => 88);
+echo "Saloni scored " . $marks["Saloni"] . " marks.";
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Saloni scored 90 marks.</pre>
+            </div>
+
+            <!-- Program 3 -->
+            <div class="topic">
+                <h3>Program 3: Multidimensional Array Example</h3>
+                <pre>
+&lt;?php
+$students = array(
+    array("Riya", 18, "A"),
+    array("Saloni", 19, "B"),
+    array("Karan", 18, "A")
+);
+
+echo $students[1][0] . " is " . $students[1][1] . " years old and got grade " . $students[1][2];
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Saloni is 19 years old and got grade B</pre>
+            </div>
+
+            <!-- Program 4 -->
+            <div class="topic">
+                <h3>Program 4: Traversing Array using foreach</h3>
+                <pre>
+&lt;?php
+$colors = array("Red", "Green", "Blue");
+foreach ($colors as $value) {
+    echo "$value &lt;br&gt;";
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>
+Red
+Green
+Blue
+                </pre>
+            </div>
+
+            <!-- Program 5 -->
+            <div class="topic">
+                <h3>Program 5: Sorting an Array</h3>
+                <pre>
+&lt;?php
+$numbers = array(4, 2, 8, 6);
+sort($numbers);
+foreach ($numbers as $num) {
+    echo "$num ";
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>2 4 6 8</pre>
+            </div>
+
+            <hr>
+
+            <!-- Summary -->
+            <section class="topic">
+                <h2>Summary</h2>
+                <p>
+                    Arrays are vital for storing and managing multiple data values efficiently in PHP. 
+                    With indexed, associative, and multidimensional arrays, you can represent real-world data easily.
+                </p>
+                <p>
+                    Understanding how to loop through, sort, and modify arrays is crucial for any PHP developer. 
+                    Mastering array handling improves both the performance and structure of your web applications.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Learn PHP | Designed by Saloni Goyal</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms in PHP | Learn PHP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Learn PHP</div>
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Page Layout -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>PHP Topics</h3>
+            <a href="basics.html">PHP Basics</a>
+            <a href="control.html">Control Structures</a>
+            <a href="functions.html">Functions</a>
+            <a href="strings.html">String Handling</a>
+            <a href="arrays.html">Arrays</a>
+            <a href="forms.html" class="active">Forms</a>
+            <a href="database.html">Integrating PHP & Database</a>
+            <a href="userstate.html">Maintaining User States</a>
+            <a href="filesystem.html">Working with File System</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>Forms in PHP</h1>
+            <p>
+                Forms are a crucial part of web development that allow users to send data to the server. 
+                PHP is used to collect, validate, and process this data securely and efficiently.
+            </p>
+            <p>
+                A form typically includes input fields, checkboxes, radio buttons, and submit buttons. 
+                PHP retrieves the form data using superglobal variables like <code>$_GET</code> and <code>$_POST</code>.
+            </p>
+            <p>
+                Proper validation ensures that only correct and safe data is submitted, making form handling one of the most important aspects of PHP web development.
+            </p>
+<p>Forms in PHP are an essential part of web development. They allow users to enter data, which can then be sent to the server for processing. PHP handles form data sent through the HTML form using the <b>GET</b> or <b>POST</b> methods.</p>
+
+<p><b>1. Creating an HTML Form:</b><br>
+An HTML form collects user input through input fields, radio buttons, checkboxes, dropdowns, and text areas. The form’s <b>action</b> attribute specifies the PHP file that will process the data, and the <b>method</b> attribute defines how the data will be sent (GET or POST).</p>
+
+<p><b>Example:</b><br>
+&lt;form action="process.php" method="post"&gt;<br>
+Name: &lt;input type="text" name="username"&gt;&lt;br&gt;<br>
+Email: &lt;input type="email" name="email"&gt;&lt;br&gt;<br>
+&lt;input type="submit" value="Submit"&gt;<br>
+&lt;/form&gt;</p>
+
+<p><b>2. Accessing Form Data in PHP:</b><br>
+PHP provides two superglobal arrays to access submitted form data:<br>
+<b>$_GET</b> – Used when form method is GET.<br>
+<b>$_POST</b> – Used when form method is POST.<br>
+<b>$_REQUEST</b> – Can access data from both GET and POST methods.</p>
+
+<p><b>Example (process.php):</b><br>
+&lt;?php<br>
+$name = $_POST['username'];<br>
+$email = $_POST['email'];<br>
+echo "Welcome, $name! Your email is $email.";<br>
+?&gt;</p>
+
+<p><b>3. Difference between GET and POST Methods:</b><br>
+<b>GET:</b> Sends data through the URL. Useful for small, non-sensitive data. Data is visible in the browser’s address bar.<br>
+<b>POST:</b> Sends data through HTTP headers. More secure and used for sensitive information like passwords.</p>
+
+<p><b>Example of GET Method:</b><br>
+&lt;form action="welcome.php" method="get"&gt;<br>
+&lt;input type="text" name="user"&gt;<br>
+&lt;input type="submit"&gt;<br>
+&lt;/form&gt;<br>
+The data will appear as: <i>welcome.php?user=John</i></p>
+
+<p><b>4. Validating Form Data:</b><br>
+Validation ensures that the user has entered correct and complete information. PHP allows both client-side (using JavaScript) and server-side validation. Common validation checks include empty fields, valid email format, and correct input type.</p>
+
+<p><b>Example of Server-Side Validation:</b><br>
+&lt;?php<br>
+if ($_SERVER["REQUEST_METHOD"] == "POST") {<br>
+if (empty($_POST["username"])) { echo "Name is required."; }<br>
+else { echo "Hello, " . $_POST["username"]; }<br>
+}<br>
+?&gt;</p>
+
+<p><b>5. Using htmlspecialchars() Function:</b><br>
+The <b>htmlspecialchars()</b> function is used to prevent XSS (Cross-site scripting) attacks by converting special HTML characters into entities.<br>
+Example:<br>
+$name = htmlspecialchars($_POST['username']);</p>
+
+<p><b>6. Self-Processing Form:</b><br>
+You can handle both the form display and processing in the same file using the PHP <b>$_SERVER["PHP_SELF"]</b> variable.<br>
+Example:<br>
+&lt;form method="post" action="&lt;?php echo $_SERVER['PHP_SELF']; ?&gt;"&gt;<br>
+&lt;input type="text" name="name"&gt;<br>
+&lt;input type="submit"&gt;<br>
+&lt;/form&gt;<br>
+&lt;?php<br>
+if ($_SERVER["REQUEST_METHOD"] == "POST") {<br>
+echo "Welcome " . $_POST["name"];<br>
+}<br>
+?&gt;</p>
+
+<p><b>7. Example Program:</b><br>
+&lt;form method="post" action="process.php"&gt;<br>
+Name: &lt;input type="text" name="name"&gt;&lt;br&gt;<br>
+Age: &lt;input type="number" name="age"&gt;&lt;br&gt;<br>
+&lt;input type="submit" value="Submit"&gt;<br>
+&lt;/form&gt;<br><br>
+
+&lt;?php<br>
+if ($_SERVER["REQUEST_METHOD"] == "POST") {<br>
+$name = $_POST["name"];<br>
+$age = $_POST["age"];<br>
+echo "Hello $name, you are $age years old.";<br>
+}<br>
+?&gt;</p>
+
+<p><b>Output:</b><br>
+Hello Saloni, you are 20 years old.</p>
+
+<p><b>8. Summary:</b><br>
+Forms in PHP are used to collect and process user input. Data can be sent using GET or POST methods. PHP provides superglobal arrays like $_GET, $_POST, and $_REQUEST to access form data. Using functions like htmlspecialchars() and server-side validation helps make forms secure and reliable.</p>
+            <hr>
+            <h2>Example Programs</h2>
+
+            <!-- Program 1 -->
+            <div class="topic">
+                <h3>Program 1: Simple Form using GET Method</h3>
+                <pre>
+&lt;form method="get" action="forms.php"&gt;
+    Enter your name: &lt;input type="text" name="username"&gt;
+    &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+
+&lt;?php
+if (isset($_GET['username'])) {
+    echo "Welcome, " . $_GET['username'] . "!";
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Welcome, Saloni!</pre>
+            </div>
+
+            <!-- Program 2 -->
+            <div class="topic">
+                <h3>Program 2: Simple Form using POST Method</h3>
+                <pre>
+&lt;form method="post" action="forms.php"&gt;
+    Enter your city: &lt;input type="text" name="city"&gt;
+    &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+
+&lt;?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    echo "Your city is: " . $_POST['city'];
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Your city is: Chandigarh</pre>
+            </div>
+
+            <!-- Program 3 -->
+            <div class="topic">
+                <h3>Program 3: Validating Empty Form Fields</h3>
+                <pre>
+&lt;form method="post" action="forms.php"&gt;
+    Name: &lt;input type="text" name="name"&gt;
+    &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+
+&lt;?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST['name'])) {
+        echo "Name is required!";
+    } else {
+        echo "Hello, " . $_POST['name'];
+    }
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Name is required! or Hello, Saloni</pre>
+            </div>
+
+            <!-- Program 4 -->
+            <div class="topic">
+                <h3>Program 4: Radio Button Input</h3>
+                <pre>
+&lt;form method="post" action="forms.php"&gt;
+    Gender:
+    &lt;input type="radio" name="gender" value="Male"&gt;Male
+    &lt;input type="radio" name="gender" value="Female"&gt;Female
+    &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+
+&lt;?php
+if (isset($_POST['gender'])) {
+    echo "Gender: " . $_POST['gender'];
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Gender: Female</pre>
+            </div>
+
+            <!-- Program 5 -->
+            <div class="topic">
+                <h3>Program 5: Dropdown List Example</h3>
+                <pre>
+&lt;form method="post" action="forms.php"&gt;
+    Select your country:
+    &lt;select name="country"&gt;
+        &lt;option value="India"&gt;India&lt;/option&gt;
+        &lt;option value="USA"&gt;USA&lt;/option&gt;
+        &lt;option value="UK"&gt;UK&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;input type="submit" value="Submit"&gt;
+&lt;/form&gt;
+
+&lt;?php
+if (isset($_POST['country'])) {
+    echo "You selected: " . $_POST['country'];
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>You selected: India</pre>
+            </div>
+
+            <hr>
+
+            <!-- Summary -->
+            <section class="topic">
+                <h2>Summary</h2>
+                <p>
+                    Forms in PHP enable interaction between users and the server by collecting and processing input data. 
+                    Using <code>$_GET</code> and <code>$_POST</code> methods, developers can access submitted information.
+                </p>
+                <p>
+                    By validating form data, you ensure secure and accurate user input. 
+                    Understanding form handling is essential for creating login pages, feedback forms, and registration systems in PHP.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Learn PHP | Designed by Saloni Goyal</p>
+    </footer>
+
+</body>
+</html>

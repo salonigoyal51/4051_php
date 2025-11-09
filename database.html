@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrating PHP with Database | Learn PHP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Learn PHP</div>
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Page Layout -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>PHP Topics</h3>
+            <a href="basics.html">PHP Basics</a>
+            <a href="control.html">Control Structures</a>
+            <a href="functions.html">Functions</a>
+            <a href="strings.html">String Handling</a>
+            <a href="arrays.html">Arrays</a>
+            <a href="forms.html">Forms</a>
+            <a href="database.html" class="active">Integrating PHP & Database</a>
+            <a href="userstate.html">Maintaining User States</a>
+            <a href="filesystem.html">Working with File System</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>Integrating PHP with Database</h1>
+            <p>
+                PHP can connect and interact with databases such as MySQL to store, retrieve, update, and delete data dynamically. 
+                This allows developers to create interactive web applications like login systems, product catalogs, and dashboards.
+            </p>
+            <p>
+                PHP uses extensions like <code>MySQLi</code> (MySQL Improved) and <code>PDO</code> (PHP Data Objects) to connect with databases. 
+                These provide secure and efficient methods for executing SQL queries.
+            </p>
+            <p>
+                Database integration forms the backbone of dynamic websites, making PHP one of the most popular languages for backend development.
+            </p>
+<p>Integrating PHP with a database allows web applications to store, retrieve, and manage data dynamically. The most commonly used database with PHP is MySQL because it is fast, reliable, and easy to use.</p>
+
+<p><b>1. What is PHP and Database Integration?</b><br>
+PHP and MySQL integration means connecting a PHP script to a MySQL database so that PHP can send queries to the database and receive results. It allows the creation of dynamic websites like login systems, registration forms, and data management systems.</p>
+
+<p><b>2. Steps to Connect PHP with MySQL Database:</b></p>
+
+<p><b>Step 1: Create a Database</b><br>
+Open phpMyAdmin or MySQL console and create a database using the following command:<br>
+CREATE DATABASE studentdb;</p>
+
+<p><b>Step 2: Create a Table</b><br>
+Inside the database, create a table to store data:<br>
+CREATE TABLE students (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(50), age INT, course VARCHAR(50));</p>
+
+<p><b>Step 3: Establish Connection in PHP</b><br>
+Use the <b>mysqli_connect()</b> function to connect PHP with MySQL.<br>
+Example:<br>
+$servername = "localhost";<br>
+$username = "root";<br>
+$password = "";<br>
+$dbname = "studentdb";<br><br>
+$conn = mysqli_connect($servername, $username, $password, $dbname);<br>
+if (!$conn) { die("Connection failed: " . mysqli_connect_error()); }<br>
+echo "Connected successfully";</p>
+
+<p><b>Step 4: Insert Data into Table</b><br>
+After connection, use an SQL INSERT statement to add records.<br>
+Example:<br>
+$sql = "INSERT INTO students (name, age, course) VALUES ('Riya', 20, 'BSc')";<br>
+if (mysqli_query($conn, $sql)) { echo "Record inserted successfully"; } else { echo "Error: " . mysqli_error($conn); }</p>
+
+<p><b>Step 5: Retrieve Data from Table</b><br>
+Use SELECT query to fetch data.<br>
+Example:<br>
+$result = mysqli_query($conn, "SELECT * FROM students");<br>
+while ($row = mysqli_fetch_assoc($result)) {<br>
+echo "ID: " . $row['id'] . " Name: " . $row['name'] . " Age: " . $row['age'] . " Course: " . $row['course'] . "&lt;br&gt;";<br>
+}</p>
+
+<p><b>Step 6: Close the Connection</b><br>
+After performing operations, close the database connection using:<br>
+mysqli_close($conn);</p>
+
+<p><b>3. Commonly Used MySQLi Functions:</b><br>
+mysqli_connect() – Opens a new connection to the MySQL server.<br>
+mysqli_query() – Performs a query on the database.<br>
+mysqli_fetch_assoc() – Fetches a result row as an associative array.<br>
+mysqli_num_rows() – Returns the number of rows in a result set.<br>
+mysqli_close() – Closes the database connection.</p>
+
+<p><b>4. Example Program:</b><br>
+&lt;?php<br>
+$conn = mysqli_connect("localhost", "root", "", "studentdb");<br>
+if (!$conn) { die("Connection failed: " . mysqli_connect_error()); }<br>
+$sql = "SELECT * FROM students";<br>
+$result = mysqli_query($conn, $sql);<br>
+while ($row = mysqli_fetch_assoc($result)) {<br>
+echo $row['id'] . " - " . $row['name'] . " - " . $row['course'] . "&lt;br&gt;";<br>
+}<br>
+mysqli_close($conn);<br>
+?&gt;</p>
+
+<p><b>5. Advantages of PHP-MySQL Integration:</b><br>
+- Enables dynamic and interactive web pages.<br>
+- Data can be stored, retrieved, and updated easily.<br>
+- Supports user management systems like login and registration.<br>
+- Provides secure and structured data storage.</p>
+
+<p><b>6. Summary:</b><br>
+Integrating PHP with a database allows PHP scripts to communicate with MySQL. Using functions like mysqli_connect(), mysqli_query(), and mysqli_fetch_assoc(), developers can store, retrieve, and manage data efficiently. This integration forms the foundation for most dynamic web applications such as blogs, e-commerce websites, and student management systems.</p>
+            <hr>
+            <h2>Example Programs</h2>
+
+            <!-- Program 1 -->
+            <div class="topic">
+                <h3>Program 1: Connect PHP with MySQL Database</h3>
+                <pre>
+&lt;?php
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "school";
+
+// Create connection
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Check connection
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully!";
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Connected successfully!</pre>
+            </div>
+
+            <!-- Program 2 -->
+            <div class="topic">
+                <h3>Program 2: Creating a Table in MySQL</h3>
+                <pre>
+&lt;?php
+$conn = mysqli_connect("localhost", "root", "", "school");
+
+$sql = "CREATE TABLE Students (
+id INT(6) AUTO_INCREMENT PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+age INT(3),
+grade VARCHAR(5)
+)";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Table Students created successfully";
+} else {
+    echo "Error creating table: " . mysqli_error($conn);
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Table Students created successfully</pre>
+            </div>
+
+            <!-- Program 3 -->
+            <div class="topic">
+                <h3>Program 3: Inserting Data into Table</h3>
+                <pre>
+&lt;?php
+$conn = mysqli_connect("localhost", "root", "", "school");
+
+$sql = "INSERT INTO Students (name, age, grade)
+VALUES ('Saloni', 19, 'A')";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Record added successfully!";
+} else {
+    echo "Error: " . mysqli_error($conn);
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Record added successfully!</pre>
+            </div>
+
+            <!-- Program 4 -->
+            <div class="topic">
+                <h3>Program 4: Retrieving Data from Table</h3>
+                <pre>
+&lt;?php
+$conn = mysqli_connect("localhost", "root", "", "school");
+
+$result = mysqli_query($conn, "SELECT * FROM Students");
+
+while ($row = mysqli_fetch_assoc($result)) {
+    echo "Name: " . $row["name"] . " | Age: " . $row["age"] . " | Grade: " . $row["grade"] . "&lt;br&gt;";
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>
+Name: Saloni | Age: 19 | Grade: A
+Name: Riya | Age: 18 | Grade: B
+                </pre>
+            </div>
+
+            <!-- Program 5 -->
+            <div class="topic">
+                <h3>Program 5: Updating Data in Table</h3>
+                <pre>
+&lt;?php
+$conn = mysqli_connect("localhost", "root", "", "school");
+
+$sql = "UPDATE Students SET grade='A+' WHERE name='Saloni'";
+
+if (mysqli_query($conn, $sql)) {
+    echo "Record updated successfully!";
+} else {
+    echo "Error updating record: " . mysqli_error($conn);
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Record updated successfully!</pre>
+            </div>
+
+            <hr>
+
+            <!-- Summary -->
+            <section class="topic">
+                <h2>Summary</h2>
+                <p>
+                    PHP’s integration with MySQL enables web developers to store and manage data dynamically. 
+                    From connecting to creating tables and retrieving or updating records, PHP makes database operations easy and efficient.
+                </p>
+                <p>
+                    Understanding how to interact with a database is essential for building data-driven applications such as registration systems, 
+                    e-commerce sites, and content management platforms.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Learn PHP | Designed by Saloni Goyal</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Structures | Learn PHP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">Learn PHP</div>
+        <nav class="top-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>PHP Topics</h3>
+            <a href="basics.html">PHP Basics</a>
+            <a href="control.html" class="active">Control Structures</a>
+            <a href="functions.html">Functions</a>
+            <a href="strings.html">String Handling</a>
+            <a href="arrays.html">Arrays</a>
+            <a href="forms.html">Forms</a>
+            <a href="database.html">Integrating PHP & Database</a>
+            <a href="userstate.html">Maintaining User States</a>
+            <a href="filesystem.html">Working with File System</a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <h1>Control Structures in PHP</h1>
+            <p>
+                Control structures are one of the most essential parts of any programming language. 
+                In PHP, they allow developers to control the flow of code execution based on conditions and repetitions. 
+                These structures make decisions (like whether to run a certain block of code) and repeat tasks until specific conditions are met. 
+                PHP supports a variety of control statements such as <b>if</b>, <b>if...else</b>, <b>if...elseif...else</b>, <b>switch</b>, and different types of <b>loops</b> like <b>for</b>, <b>while</b>, and <b>foreach</b>.
+            </p>
+
+            <p>
+                Control structures are vital for creating dynamic logic-driven web applications. 
+                They help automate repetitive processes, make logical decisions, validate user inputs, and manage real-time workflows. 
+                Without control structures, PHP would execute instructions linearly, making dynamic behavior impossible.
+            </p>
+<p>Control structures in PHP are statements that determine the flow of execution in a program. They help in making decisions, repeating actions, and controlling the logic based on conditions. The main types of control structures in PHP are Conditional Statements and Looping Statements.</p>
+
+<p><b>1. Conditional Statements:</b> Conditional statements are used to perform different actions based on different conditions. PHP supports several types of conditional statements.</p>
+
+<p><b>a) if Statement:</b> It is used to execute a block of code only if the given condition is true.<br>
+Example:<br>
+if ($age &gt;= 18) { echo "You are eligible to vote."; }</p>
+
+<p><b>b) if...else Statement:</b> It executes one block of code if the condition is true, otherwise executes another block.<br>
+Example:<br>
+if ($marks &gt;= 40) { echo "Pass"; } else { echo "Fail"; }</p>
+
+<p><b>c) if...elseif...else Statement:</b> It is used when you need to check multiple conditions.<br>
+Example:<br>
+if ($marks &gt;= 90) { echo "Grade A"; } elseif ($marks &gt;= 75) { echo "Grade B"; } else { echo "Grade C"; }</p>
+
+<p><b>d) switch Statement:</b> It is used to select one block of code to execute from multiple options. It works like multiple if-else statements but in a cleaner way.<br>
+Example:<br>
+switch ($day) {<br>
+case "Monday": echo "Start of the week"; break;<br>
+case "Friday": echo "Weekend is near"; break;<br>
+default: echo "Midweek day";<br>
+}</p>
+
+<p><b>2. Looping Statements:</b> Loops are used to execute a block of code repeatedly as long as a certain condition is true. PHP provides several types of loops.</p>
+
+<p><b>a) while Loop:</b> Executes the block of code as long as the condition is true.<br>
+Example:<br>
+$x = 1;<br>
+while ($x &lt;= 5) { echo "Number: $x &lt;br&gt;"; $x++; }</p>
+
+<p><b>b) do...while Loop:</b> Similar to while loop but the condition is checked after executing the block once. The loop will always run at least once.<br>
+Example:<br>
+$x = 1;<br>
+do { echo "Number: $x &lt;br&gt;"; $x++; } while ($x &lt;= 5);</p>
+
+<p><b>c) for Loop:</b> Used when you know in advance how many times to execute the code.<br>
+Example:<br>
+for ($i = 1; $i &lt;= 5; $i++) { echo "Count: $i &lt;br&gt;"; }</p>
+
+<p><b>d) foreach Loop:</b> Special loop used for arrays. It iterates through each element in an array.<br>
+Example:<br>
+$colors = array("Red", "Green", "Blue");<br>
+foreach ($colors as $color) { echo $color . "&lt;br&gt;"; }</p>
+
+<p><b>3. Jump Statements:</b> PHP provides jump statements like break, continue, and exit to control the flow inside loops or scripts.</p>
+
+<p><b>a) break:</b> Terminates the current loop or switch statement.<br>
+<b>b) continue:</b> Skips the rest of the current iteration and moves to the next iteration.<br>
+<b>c) exit or die:</b> Terminates the script execution completely.</p>
+
+<p><b>Example of break and continue:</b><br>
+for ($i = 1; $i &lt;= 5; $i++) {<br>
+if ($i == 3) continue;<br>
+if ($i == 5) break;<br>
+echo "Number: $i &lt;br&gt;";<br>
+}</p>
+
+<p><b>Summary:</b> Control structures determine how a program executes. Conditional statements like if and switch decide which code runs based on conditions. Looping structures like while, do...while, for, and foreach are used for repetition. Jump statements such as break, continue, and exit help control the execution flow inside loops and programs.</p>
+            <hr>
+            <h2>Example Programs</h2>
+
+            <!-- Program 1 -->
+            <div class="topic">
+                <h3>Program 1: Simple if Statement</h3>
+                <pre>
+&lt;?php
+$age = 18;
+if ($age >= 18) {
+    echo "You are eligible to vote.";
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>You are eligible to vote.</pre>
+            </div>
+
+            <!-- Program 2 -->
+            <div class="topic">
+                <h3>Program 2: if...else Statement</h3>
+                <pre>
+&lt;?php
+$marks = 40;
+if ($marks >= 50) {
+    echo "You passed the exam!";
+} else {
+    echo "You failed the exam!";
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>You failed the exam!</pre>
+            </div>
+
+            <!-- Program 3 -->
+            <div class="topic">
+                <h3>Program 3: if...elseif...else Ladder</h3>
+                <pre>
+&lt;?php
+$score = 82;
+if ($score >= 90) {
+    echo "Grade: A+";
+} elseif ($score >= 75) {
+    echo "Grade: A";
+} elseif ($score >= 60) {
+    echo "Grade: B";
+} else {
+    echo "Grade: C";
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Grade: A</pre>
+            </div>
+
+            <!-- Program 4 -->
+            <div class="topic">
+                <h3>Program 4: switch Statement</h3>
+                <pre>
+&lt;?php
+$day = "Tuesday";
+switch ($day) {
+    case "Monday":
+        echo "Start of the work week!";
+        break;
+    case "Tuesday":
+        echo "Second day of the week!";
+        break;
+    case "Friday":
+        echo "Weekend is coming!";
+        break;
+    default:
+        echo "Just another day.";
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>Second day of the week!</pre>
+            </div>
+
+            <!-- Program 5 -->
+            <div class="topic">
+                <h3>Program 5: Using Loops (for, while, foreach)</h3>
+                <pre>
+&lt;?php
+// For loop example
+echo "For Loop: ";
+for ($i = 1; $i <= 5; $i++) {
+    echo $i . " ";
+}
+
+// While loop example
+echo "&lt;br&gt;While Loop: ";
+$j = 1;
+while ($j <= 3) {
+    echo $j . " ";
+    $j++;
+}
+
+// Foreach loop example
+echo "&lt;br&gt;Foreach Loop: ";
+$fruits = array("Apple", "Banana", "Cherry");
+foreach ($fruits as $fruit) {
+    echo $fruit . " ";
+}
+?&gt;
+                </pre>
+                <p><b>Output:</b></p>
+                <pre>
+For Loop: 1 2 3 4 5 
+While Loop: 1 2 3 
+Foreach Loop: Apple Banana Cherry
+                </pre>
+            </div>
+
+            <hr>
+
+            <!-- Summary -->
+            <section class="topic">
+                <h2>Summary</h2>
+                <p>
+                    In this section, we learned how PHP’s control structures determine the flow of a program. 
+                    Conditional statements like <b>if</b>, <b>else</b>, and <b>switch</b> help in making decisions based on specific conditions, 
+                    while looping structures like <b>for</b>, <b>while</b>, and <b>foreach</b> allow repetition of tasks. 
+                    These are fundamental in building logical web applications — such as validating form data, managing sessions, or dynamically displaying content.
+                </p>
+                <p>
+                    By mastering control structures, developers can make their PHP applications more intelligent, interactive, and efficient.
+                </p>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Learn PHP | Designed by Saloni Goyal</p>
+    </footer>
+
+</body>
+</html>
